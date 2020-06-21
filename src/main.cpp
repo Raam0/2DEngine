@@ -2,8 +2,11 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-int main(int argv, char* args[])
+int main(int argc, char* args[])
 {
-	std::cout << "hello world" << std::endl;
+	if(SDL_Init(SDL_INIT_VIDEO) > 0)
+		std::cout << "SDL_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+	if(!(IMG_Init(IMG_INIT_PNG)))
+		std::cout << "IMG_init has failed. Error: " << SDL_GetError() << std::endl;
 	return 0;
 }
